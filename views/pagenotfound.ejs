@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOT FOUND</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        background-image: url('../images/404.png');
+        width: 100%;
+        text-align: center;
+    }
+
+    a {
+        position: relative;
+        margin-top: 12em;
+    }
+
+    h2 {
+        background-color: rgba(194, 194, 194, 0.582);
+    }
+</style>
+
+<body>
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <span class="navbar-brand h1 mx-auto">ASiSA BANK</span>
+    </nav>
+    <div>
+        <h2>Results for <b>
+                <%= search %>
+            </b> is not found! </h2>
+    </div>
+    <div>
+        <a href="/asisa" class="btn btn-lg btn-danger">Go Back To HOME</a>
+    </div>
+</body>
+
+</html>

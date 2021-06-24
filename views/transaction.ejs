@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRANSACTION HISTORY </title>
+    <%- include('./partials/links') %>
+</head>
+
+<style>
+    table,
+    tr,
+    th,
+    td,
+    col {
+        border: 1px solid rgb(255, 255, 255);
+        padding: 0.75em;
+        background-color: whitesmoke;
+    }
+
+    a {
+        color: rgb(236, 236, 236);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .customenav {
+        font-weight: 600;
+        padding-left: 14%;
+    }
+
+    .fashand {
+        font-size: 30px;
+        color: rgb(68, 149, 255);
+    }
+</style>
+
+<body>
+
+    <nav class="navbar sticky-top navbar-dark bg-dark mb-0">
+        <span class="navbar-brand h1 mx-auto py-2">ASiSA BANK</span>
+    </nav>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/<%= user._id %> "><i class="fas fashand fa-hand-point-left"></i>
+                        </a>
+                    </li>&emsp;
+                    <li class="nav-item">
+                        <a class="nav-link" href="/update/<%= user._id %> "><i class="fas fa-user-edit"></i>
+                            Update_Profile</a>
+                    </li>&emsp;
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/netbanking/<%= user._id %> "><i
+                                class="fas fa-chevron-circle-left"></i>
+                            Net_Banking</a>
+                    </li>&emsp;
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal"><i
+                                class="fas fa-phone-square-alt"></i>
+                            Contact_Us</a>
+                    </li>&emsp;
+                    <li class="nav-item">
+                        <a class="nav-link" href="/delete/<%= user._id %> "> <i class="fas fa-user-slash"></i>
+                            Delete_Account</a>
+                    </li>
+                </ul>
+                <form action="/asisa" class="d-flex">
+                    <button class="btn btn-outline-warning" type="submit">Sign_out</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <section class="container mt-5 px-5">
+        <h2 class="mb-4">ACCOUNT DETAILS</h2>
+        <table>
+            <tr>
+                <th>
+                    <div> Account Holder Name </div>
+                </th>
+                <th>
+                    <div> Branch Name </div>
+                </th>
+                <th>
+                    <div> Bank balance</div>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <%= user.fullname %>
+                    </div>
+
+                </td>
+                <td>
+                    <div>
+                        <%= user._id %>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <%= user.bankbalance %>
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </section>
+    <section class="container mt-5 px-5">
+        <h2 class="mb-4">TRANSACTION HISTORY</h2>
+        <div class="row mb-2">
+            <div class="col">
+                Balance at time of transaction
+            </div>
+            <div class="col">
+                <span>Mode</span>
+            </div>
+            <div class="col">
+                Amount Transfered
+            </div>
+
+        </div>
+        <% for(let i of user.transaction){ %>
+            <div class="row">
+                <div class="col" style="border: 1px solid black;">
+                    <%= i.currentAmount %>
+                </div>
+                <div class="col" style="border: 1px solid black;">
+                    <%= i.mode %>
+                </div>
+                <div class="col" style="border: 1px solid black;">
+                    <%= i.amount %>
+                </div>
+            </div>
+            <% } %>
+
+    </section>
+
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<script>
+
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+    const button = document.querySelector('.submitbutton');
+
+    button.addEventListener('click', function (e) {
+        if (!((document.querySelector('.pass').value) === (document.querySelector('.confirmpass').value))) {
+            event.preventDefault(e);
+            document.querySelector('.confirmpass').classList.add('is-invalid', 'form-control:invalid').remove('was-validated', 'is-valid');
+        }
+    })
+</script>
+
+<style>
+    *,
+    *:before,
+    *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 100px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        background-color: #f5f5f5;
+    }
+
+    .form-signin {
+        width: 100%;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    nav h1 {
+        padding-left: 46%;
+
+    }
+</style>
+
+
+<body class="bg-light">
+    <nav class=" navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+        <div class="container-fluid">
+            <h1> <a class="navbar-brand" href="#">ASiSA BANK </a> </h1>
+        </div>
+    </nav>
+    <main class="form-signin">
+        <form action="/home" method="POST" class="row g-3 needs-validation  " novalidate>
+            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor"
+                class="bi bi-file-person" viewBox="0 0 16 16">
+                <path
+                    d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
+                <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+            </svg>
+
+            <div class="form-floating">
+                <input type="text" name="userid" class="form-control" id="floatingInput validationCustom03"
+                    placeholder="User Id" required>
+                <label for="floatingInput">User Id</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" name="password" class="form-control" id="floatingPassword validationCustom04"
+                    placeholder="Password" required>
+                <label for="floatingPassword">Password</label>
+            </div>
+            <!-- <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div> -->
+            <button class="w-100 btn btn-lg btn-secondary" type="submit">Sign in</button>
+
+        </form>
+        <form action="/signup">
+            <button class="w-100 btn btn-outline-secondary mt-3" type="submit">Sign up</button>
+        </form>
+        <p class="text-muted pl-5 mt-5">&copy; ASiSA Bank 2021</p>
+
+    </main>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+    crossorigin="anonymous"></script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net Banking Home</title>
+    <%- include('./partials/links') %>
+</head>
+<style>
+    table,
+    tr,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 0.75em;
+    }
+
+    a {
+        color: rgb(236, 236, 236);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .customenav {
+        font-weight: 600;
+        padding-left: 12%;
+    }
+</style>
+
+<body>
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <span class="navbar-brand h1 mx-auto py-2">ASiSA BANK</span>
+    </nav>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/update/<%= user._id %> "><i class="fas fa-user-edit"></i>
+                            Update_Profile</a>
+                    </li>&emsp;
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/netbanking/<%= user._id %> "><i
+                                class="fas fa-chevron-circle-left"></i>
+                            Net_Banking</a>
+                    </li>&emsp;
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal"><i
+                                class="fas fa-phone-square-alt"></i>
+                            Contact_Us</a>
+                    </li>&emsp;
+                    <li class="nav-item">
+                        <a class="nav-link" href="/delete/<%= user._id %> "> <i class="fas fa-user-slash"></i>
+                            Delete_Account</a>
+                    </li>
+                </ul>
+                <form action="/asisa" class="d-flex">
+                    <button class="btn btn-outline-warning" type="submit">Sign_out</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="container mt-5 px-5 mb-2">
+        <h2 class="mb-4">NET BANKING DETAILS</h2>
+
+        <div class="row">
+            <div class="col">
+                <div class="card text-center">
+                    <div class="card-header">From Account</div>
+
+                    <div class="card-body">
+
+                        <form>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="AccHolderName" value=" <%= user.fullname %>"
+                                    disabled>
+                                <label for="AccHolderName">Acc Holder Name</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="_id" value="<%= user._id %>" disabled>
+                                <label for="_id">Account Number</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="number" class="form-control " name="bankbalance" id="bankbalance"
+                                    placeholder="Deposit Amount" value="<%= user.bankbalance %>" disabled>
+                                <label for="bankbalance">Balance</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card-footer text-muted"></div>
+                </div>
+            </div>
+
+            <div class="col-8">
+                <div class="card text-center">
+                    <div class="card-header"> To Account</div>
+
+                    <div class="card-body">
+
+                        <form action="/netbanking/<%= user._id %>" method="POST" class="needs-validation" novalidate>
+
+                            <div class="col form-floating mb-4">
+                                <select class="form-select" name="toAccount" required>
+                                    <option value="stop">Choose an Account</option>
+                                    <% for(let to of tos){ %>
+                                        <% if(!(to._id==user._id)){ %>
+                                            <option value=" <%= to._id %>">
+                                                <%= to.fullname %>
+                                            </option>
+                                            <% } %>
+                                                <% } %>
+                                </select>
+                                <label for="AccHolderName">Acc Holder Name</label>
+                            </div>
+
+
+
+
+                            <div class="form-floating mb-4">
+                                <input type="number" class="form-control " name="transferAmount" id="transferAmount"
+                                    placeholder="Transfer Amount" min="100" max="<%= user.bankbalance %>" required>
+                                <label for="transferAmount">Transfer Amount</label>
+                            </div>
+                            <button class="btn btn-success mb-3">
+                                TRANSFER
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="card-footer text-muted"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+    <nav class="navbar bottom-fixed navbar-light bg-light mt-5">
+        <span class="navbar-brand h1 mx-auto py-2"><a href="/home/<%= user._id %>"
+                class="btn btn-lg btn-warning">cancel</a></span>
+    </nav>
+
+</body>
+
+<%- include('./partials/formvalidation') %>
+
+</html>
